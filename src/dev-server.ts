@@ -7,7 +7,8 @@ const PORT = getEnv().PORT || 3000;
 // Dynamic import so the handler is loaded after env vars are set
 const { GET, POST, DELETE } = await import('../api/server.js');
 
-const handlers: Record<string, typeof GET> = { GET, POST, DELETE };
+const handlers: Record<string, (req: Request) => Response | Promise<Response>> =
+  { GET, POST, DELETE };
 
 const server = createServer(async (req, res) => {
   const method = req.method ?? 'GET';

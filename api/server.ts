@@ -131,6 +131,12 @@ async function handleRequest(req: Request) {
   });
 }
 
-export const GET = handleRequest;
+// Stateless mode — we don't support server-initiated notifications,
+// so reject GET (SSE stream) to avoid expensive long-poll timeouts on Vercel.
+export const GET = () =>
+  new Response('Method Not Allowed', {
+    status: 405,
+    headers: { 'Access-Control-Allow-Origin': '*' },
+  });
 export const POST = handleRequest;
 export const DELETE = handleRequest;
