@@ -15,7 +15,7 @@ describe('parseOpenAPISpec', () => {
   });
 
   async function loadParser() {
-    const mod = await import('../src/openapi-parser');
+    const mod = await import('../src/openapi-parser.js');
     return mod.parseOpenAPISpec;
   }
 

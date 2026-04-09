@@ -1,9 +1,12 @@
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp';
-import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp';
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js';
 
-import { callApi } from '../src/api-client';
-import { initConfig, getConfig } from '../src/config';
-import { parseOpenAPISpec, type ToolDefinition } from '../src/openapi-parser';
+import { callApi } from '../src/api-client.js';
+import { initConfig, getConfig } from '../src/config.js';
+import {
+  parseOpenAPISpec,
+  type ToolDefinition,
+} from '../src/openapi-parser.js';
 
 // Cache parsed tools in module scope (persists across warm invocations)
 let cachedTools: ToolDefinition[] | null = null;

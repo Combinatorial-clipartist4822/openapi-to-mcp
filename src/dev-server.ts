@@ -1,11 +1,11 @@
 import { createServer } from 'node:http';
 
-import { getEnv } from './config';
+import { getEnv } from './config.js';
 
 const PORT = getEnv().PORT || 3000;
 
 // Dynamic import so the handler is loaded after env vars are set
-const { GET, POST, DELETE } = await import('../api/server');
+const { GET, POST, DELETE } = await import('../api/server.js');
 
 const handlers: Record<string, typeof GET> = { GET, POST, DELETE };
 

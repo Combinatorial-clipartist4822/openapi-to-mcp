@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import type { ParamSource } from '../src/api-client';
+import type { ParamSource } from '../src/api-client.js';
 
 // Mock config before importing api-client
-vi.mock('../src/config', () => ({
+vi.mock('../src/config.js', () => ({
   getConfig: () => ({ apiBaseUrl: 'https://api.test.com' }),
 }));
 
-const { callApi } = await import('../src/api-client');
+const { callApi } = await import('../src/api-client.js');
 
 describe('callApi', () => {
   const mockFetch = vi.fn();

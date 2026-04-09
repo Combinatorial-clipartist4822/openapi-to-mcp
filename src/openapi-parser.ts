@@ -1,11 +1,11 @@
-import type { ToolAnnotations } from '@modelcontextprotocol/sdk/types';
+import type { ToolAnnotations } from '@modelcontextprotocol/sdk/types.js';
 import type { OpenAPIV3 } from 'openapi-types';
 import { parse as parseYaml } from 'yaml';
 import { z, type ZodType } from 'zod';
 
-import type { ParamSource } from './api-client';
-import { getEnv } from './config';
-import { jsonSchemaToZod } from './schema-to-zod';
+import type { ParamSource } from './api-client.js';
+import { getEnv } from './config.js';
+import { jsonSchemaToZod } from './schema-to-zod.js';
 
 export interface ToolDefinition {
   name: string;
