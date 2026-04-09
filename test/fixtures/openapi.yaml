@@ -1,0 +1,64 @@
+openapi: '3.0.3'
+info:
+  title: Test API
+  version: '2.0.0'
+servers:
+  - url: https://api.test.com
+paths:
+  /items:
+    get:
+      summary: List Items
+      description: Returns a list of items
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          description: Max items to return
+        - name: status
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [active, archived]
+      responses:
+        '200':
+          description: OK
+  /items/{id}:
+    post:
+      summary: Update Item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+              properties:
+                name:
+                  type: string
+                  description: Item name
+                tags:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        '200':
+          description: OK
+    delete:
+      summary: Delete Item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Deleted
