@@ -2,6 +2,8 @@
 
 A minimal [MCP](https://modelcontextprotocol.io) server that auto-generates tools from your OpenAPI spec. Optimized for Vercel's serverless architecture.
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AudienceLabV3/openapi-to-mcp&env=OPENAPI_SPEC_URL&envDescription=URL%20to%20your%20OpenAPI%20spec&envLink=https://github.com/AudienceLabV3/openapi-to-mcp%23configuration)
+
 ## Quick Start
 
 1. Fork this repo
